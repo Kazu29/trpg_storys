@@ -1,0 +1,20 @@
+<div class='container'>
+  <h2>シナリオ詳細</h2>
+  <div class="row">
+    <p><%= @scenario.genre.name %></p>
+  </div>
+  <div class="row">
+    <h2><%= @scenario.title %></h2>
+    <h4>作成者<%= @user.name %></h4>
+  </div>
+  <div class="row">
+    <p><%= @scenario.overview %></p>
+  </div>
+  <div class="row">
+    <p><%= @scenario.content %></p>
+  </div>
+  <% if @scenario.user == current_user %>
+    <p><%= link_to "編集", edit_scenario_path(@scenario), class:"btn btn-sm btn-success" %></p>
+  <% end %>
+</div>
+
