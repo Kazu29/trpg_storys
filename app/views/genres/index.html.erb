@@ -1,5 +1,7 @@
-      <h2>ジャンル一覧・追加</h2>
-      <%= render 'genres/form', genre:@genre %>
+      <% if current_user.admin ==  true %>
+        <%= render 'genres/form', genre:@genre %>
+      <% end %>
+      <h2>ジャンル一覧</h2>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -12,10 +14,10 @@
           <% @genres.each do |genre| %>
           <tr>
             <td "text-center"><%= genre.name %></td>
-            
-                <td><%= link_to "編集する", edit_genre_path(genre), class: "btn btn-success" %></td>
-                <td><%= link_to "削除する", genre_path(genre), method: :delete,"data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
-              
+            <% if current_user.admin ==  true %>
+              <td><%= link_to "編集する", edit_genre_path(genre), class: "btn btn-success" %></td>
+              <td><%= link_to "削除する", genre_path(genre), method: :delete,"data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
+            <% end %>
           </tr>
         <% end %>
         </tbody>

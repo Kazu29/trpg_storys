@@ -1,0 +1,30 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>マイページ</h2>
+      <table class="table">
+      <tbody>
+        <tr>
+          <th>ユーザー名</th>
+          <th><%= @user.name %></th>
+        </tr>
+        <tr>
+          <th>お気に入り<th>
+          <th><%= @user.favorites.count %></th>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <% if current_user == @user %>
+        <%= link_to edit_user_path(@user.id), class:"btn btn-outline-secondary btn-block" do %>
+          <p>編集</p>
+        <% end %>
+      <% end %>
+    </div>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <h2>投稿一覧</h2>
+      
+    </div>
+  </div>
+</div>

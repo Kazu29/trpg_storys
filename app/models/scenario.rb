@@ -13,5 +13,16 @@ class Scenario < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
   
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @scenario = Scenario.where("title LIKE?", "#{word}")
+    elsif search == "partial_match"
+      @scenario = Scenario.where("title LIKE?","%#{word}%")
+    else
+      @user = User.all
+    end
+  end
+  
 end
 

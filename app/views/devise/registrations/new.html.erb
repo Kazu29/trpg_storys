@@ -1,34 +1,44 @@
-<h2>Sign up</h2>
-
-<%= form_with model: @user, url: user_registration_path do |f| %>
+<div class = "container">
+  <%= form_with model: @user, url: user_registration_path do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <table class="ml-5">
+    <h5 class="text-center", style="background-color:#eee; width:150px; margin:30px 0 30px 100px;"><b>新規会員登録</b></h5>
+    <tbody>
+      <tr class="field">
+        <td><%= f.label :ユーザー名 %></td>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      
+      <tr class="field">
+        <td><%= f.label :メールアドレス %></td>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+      </tr>
+      
+      <tr class="field">
+        <td><%= f.label :パスワード %>
+        <% if @minimum_password_length %>
+        (<%= @minimum_password_length %>文字以上)</td>
+        <% end %>
+        <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+      </tr>
+      
+      <tr class="field">
+        <td><%= f.label :パスワード（確認用） %></td>
+        <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+      </tr>
+      
+     
+      <tr class="actions">
+        <%= f.submit "新規登録",class: "btn btn-success" %>
+      </tr>
+      
+      <tr>
+        <td><h5 class="ml-5 pl-3 pr-3 text-center", style="background-color:#ddd;">既に登録済みの方</h5></td>
+      </tr>
+      <tr>
+        <td colspan="3", class="text-center"><p><%= link_to "こちら", new_user_session_path %>からログインしてください。</p></td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+</div>

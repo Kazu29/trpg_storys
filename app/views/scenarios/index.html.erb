@@ -4,6 +4,8 @@
       <th>製作者</th>
       <th>タイトル</th>
       <th>概要</th>
+      <th>お気に入り</th>
+      <th>コメント件数</th>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +14,8 @@
       <td><%= scenario.user.name %></td>
       <td><%= link_to scenario_path(scenario.id), class:"text-dark" do %><% scenario.title %><% end %></td>
       <td><%= scenario.overview %></td>
+      <td>♥<%= scenario.favorites.count %></td>
+      <td><%= link_to "#{scenario.comments.count} コメント", scenario_path(scenario.id) %></td>
     </tr>
     <% end %>
   </tbody>

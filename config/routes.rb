@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
   
+  get "search" => "searches#search"
+  
+  
   resources :users, only: [:index,:show,:edit,:update]
+  get "quit" => "users#quit"
   
   resources :scenarios, only: [:new, :create, :show, :edit, :update, :index, :destroy] do
     resources :comments, only: [:create, :destroy]

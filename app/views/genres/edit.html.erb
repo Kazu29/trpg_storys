@@ -1,4 +1,4 @@
-<div class="container", style="margin:30px 50px 50px 80px">
+<div class="container">
   <h2 class="text-center">ジャンル編集</h2>
   <%= form_with model: @genre, url:genre_path(@genre.id), method: :patch do |f| %>
     <%= f.label :name, "ジャンル名", style:"margin-top:5px ;"%>

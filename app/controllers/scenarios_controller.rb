@@ -21,6 +21,7 @@ class ScenariosController < ApplicationController
   def show
     @scenario = Scenario.find(params[:id])
     @user = @scenario.user
+    @comment = Comment.new
   end
   
   def edit
@@ -44,9 +45,8 @@ class ScenariosController < ApplicationController
   
   def destroy
     @scenario = Scenario.find(params[:id])
-    if @scenario.destroy
-      redirect_to scenarios_path
-    end
+    @scenario.destroy
+    redirect_to scenarios_path
   end
   
   private
